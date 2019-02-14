@@ -7,7 +7,6 @@
 #######
 
 import tkinter as tk
-import tkinter.simpledialog
 
 STOCK_FILE = open('STOCK_FILE.txt', 'r')
 
@@ -30,15 +29,17 @@ def decode(cipher):
 
 def login():
     login_w = tk.Tk()
-    login_w.withdraw()
-    username = ''
-    password = ''
+    user_intro = tk.Label(login_w, text='Username:')
+    user_req = tk.Entry(login_w)
+    user_intro.pack()
+    user_req.pack()
+    password_intro = tk.Label(login_w, text='Password:')
+    password_req = tk.Entry(login_w, show='•')
+    password_intro.pack()
+    password_req.pack()
 
-    while username == '':
-        username = tk.simpledialog.askstring('Username', 'Enter your username:')
-
-    while password == '':
-        password = tk.simpledialog.askstring('Password', 'Enter your password:', show='•')
+    username = user_req.get()
+    password = password_req.get()
 
     user_list = open('users.txt', 'r')
 
